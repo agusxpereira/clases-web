@@ -535,4 +535,33 @@ Por parámetro GET recibimos el valor de "sort" y "order"
 `api/tarea/1/descripcion`
 
 - Devuelve sólo la descripcion de la tarea
-- 
+    
+  En este caso, finalizada no se considera un sub-recurso en el sentido estricto de REST, sino más bien un atributo o propiedad del recurso tarea. La estructura tareas/:id/finalizada da la apariencia de un sub-recurso, pero en realidad estás trabajando con el estado de la tarea identificada por id.
+
+    ¿Por Qué No Es un Sub-Recurso?
+    En un esquema REST puro, un sub-recurso suele representar un recurso hijo o relacionado que existe de forma independiente. Ejemplos típicos de sub-recursos serían:
+
+    ´tareas/:id/comentarios´ para manejar los comentarios de una tarea específica.
+    ´tareas/:id/adjuntos´ para archivos o adjuntos asociados a la tarea.
+    
+    En cambio, finalizada es simplemente un atributo booleano de la tarea, no un recurso independiente que tenga su propia identidad.
+
+    Alternativas RESTful para Modificar el Atributo finalizada
+    Dado que finalizada es un atributo de la tarea, una alternativa común en APIs RESTful sería actualizar ese atributo con un endpoint que acceda directamente al recurso:
+
+    PATCH sobre la Tarea Directamente:
+    > (PATCH) ´/tareas/:id´
+    > ´{ "finalizada": true }´
+    >
+    > O bien
+
+    Mantener la Riqueza Semántica con PUT/PATCH: Si aún prefieres una estructura que especifique el cambio de estado, otra opción semántica es:
+
+   > (PATCH) ´/tareas/:id/estado´
+   >
+   Con un cuerpo:
+
+  Con un cuerpo:
+
+    json
+    ´{ "estado": "finalizada" }´
