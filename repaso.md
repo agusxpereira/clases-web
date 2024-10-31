@@ -19,6 +19,9 @@ Tienen un encabezado(**header**) y un cuerpo(**body**), también código de esta
 
 La página se la pedimos a un servidor web. Y es el servidor quien *decide que enviar* según la peticion. De ser necesario interactua con archivos y base de datos para armar dicha página. Casi todos los servidores web permiten estas llamadas dinámicas.
 
+> Esto lo decide el controlador que definimos nosotros para ese servidor, segun el verbo y la url
+
+
 En principio hay dos métodos formas de generar una página web:
 - Server Side Rendering: envía una página completa desde el servidor.
 - Client Side Rendering: el cliente "arma" un html básico, recuperando y pidiendo datos al servidor según la accion.
@@ -53,7 +56,9 @@ Hasta ahora, nuestras url se verian de la siguiente manera:
 
 `localhost/about.php?dev=juan`
 
-Esto nos lleva a dos problemas: 1. Por cada **accion** se necesita un archivo php. 2. Este tipo de urls son malas para SEO.
+Esto nos lleva a dos problemas:
+1. Por cada **accion** se necesita un archivo php.
+2. Este tipo de urls son malas para SEO.
 
 Las url semanticas son del siguiente tipo:
 
@@ -203,9 +208,9 @@ Cada compenente es una clase
 
 ### Plantillas
 
-Son archivos que se utilizan para separar la lógica ddel programa y la **presentacion** del contenido en dos partes independientes.
+Son archivos que se utilizan para separar la lógica del programa y la **presentacion** del contenido en dos partes independientes.
 Se enfocan en tener plantillas rápidas, poco código y mantenibles.
-Php nos ofrece alternaticas a las estructuras de control clásicas.
+Php nos ofrece alternativas a las estructuras de control clásicas.
 
 #### La lógica 
 es la parte del código que realiza todo lo referido a la obtencion, almacenamiento, y procesamiento de los datos para entregarlos a una vista que sabe como visualizarlos. Se dice que es el detrás de escena necesario para poder presentar los datos en la pantalla.
@@ -407,7 +412,7 @@ Resultado esperado:
     ]
 ```
 ### implementacion de una api view
-
+> es la api view quien responde lo que muestra por ejemplo la consola o el postman, es mucho más importante que la vista que teniamos en el tpe
 ```php
 class APIView() {
     
